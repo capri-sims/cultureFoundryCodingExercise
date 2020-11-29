@@ -1,0 +1,62 @@
+<!doctype html>
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='global.css') }}">
+<title>Culture Foundry Customers - Join Us</title>
+<header>
+    <a href="/" rel="home" class="main-logo">
+        <img src="https://www.culturefoundry.com/wp-content/uploads/2020/09/cf-logo-thrive@2x.png" alt="Culture Foundry" class="logo-img" width="310" height="41">
+    </a>  
+</header>
+<main>
+    
+    <h1>Join us!</h1>  
+
+    <form method="POST" action="/">
+        <fieldset>
+            <div class="form-group {{'is-invalid' if form.firstName.errors }}">
+                {{ form.firstName.label }}
+                {{ form.firstName(class_="form-control") }}
+            </div>
+            {% if form.firstName.errors %}
+            <ul class="errors">{% for error in form.firstName.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+            {% endif %}
+            <div class="form-group {{'is-invalid' if form.lastName.errors }}">
+                {{ form.lastName.label }}
+                {{ form.lastName(class_="form-control") }} 
+            </div>
+            {% if form.lastName.errors %}
+            <ul class="errors">{% for error in form.lastName.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+            {% endif %}
+            <div class="form-group {{'is-invalid' if form.email.errors }}">
+                {{ form.email.label }}
+                {{ form.email(class_="form-control") }}
+            </div>
+            {% if form.email.errors %}
+            <ul class="errors">{% for error in form.email.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+            {% endif %}
+            <div class="form-group {{'is-invalid' if form.zipCode.errors }}">
+                {{ form.zipCode.label }}
+                {{ form.zipCode(class_="form-control") }}
+            </div>
+            {% if form.zipCode.errors %}
+            <ul class="errors">{% for error in form.zipCode.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+            {% endif %}
+            {{ form.csrf_token }}
+            {{ form.submit(class_="btn btn-light") }}
+        </fieldset>
+    </form>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <p class="padding-top">
+            <ul class="errors">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        </p>
+    {% endif %}
+    {% endwith %}
+</main>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='landing_page.js') }}"></script>

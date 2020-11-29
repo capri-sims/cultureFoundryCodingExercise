@@ -1,0 +1,31 @@
+<!doctype html>
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='global.css') }}">
+<title>Culture Foundry Customers - Review</title>
+<header>
+    <a href="/" rel="home" class="main-logo">
+        <img src="https://www.culturefoundry.com/wp-content/uploads/2020/09/cf-logo-thrive@2x.png" alt="Culture Foundry" class="logo-img"width="310" height="41">
+    </a>  
+</header>
+<main>
+    
+
+    {% if userInfo == None %}
+    <h1>Sorry!</h1>
+    <p>We are unable to find you. Please try again.</p>
+    {% endif %}
+
+    {% if userInfo != None %}
+    <h1>Thank you!</h1> 
+    <p class="padding-top">Please review your information:</p>
+    <div class="customer-info">
+        <p><strong>Customer ID:</strong> {{ userInfo['customerID'] }}</p> 
+        <p><strong>First Name:</strong> {{userInfo['firstName']}}</p> 
+        <p><strong>Last Name:</strong> {{userInfo['lastName']}}</p> 
+        <p><strong>Email:</strong> {{userInfo['email']}}</p> 
+        <p><strong>Zip Code:</strong> {{userInfo['zipCode']}}</p> 
+        <p><strong>Tracking GUID:</strong> {{userInfo['guid']}}</p> 
+    </div>
+    {% endif %}
+</main>
