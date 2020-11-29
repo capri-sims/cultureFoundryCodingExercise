@@ -121,7 +121,12 @@ def create_app():
             (firstName, lastName, email, zipCode, guid,)
         )
         get_db().commit()
-        return userInfo, 201 
+
+        data = get_db().execute(
+            'SELECT MAX(customer_id) FROM customer'
+        ).fetchone()
+
+        return jsonify({'customerID': data[0]}), 201 
 
     return app
 

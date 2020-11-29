@@ -1,5 +1,3 @@
-DROP TABLE IF EXISTS customer;
-
 CREATE TABLE IF NOT EXISTS customer(
     customer_id INTEGER PRIMARY KEY AUTOINCREMENT,
     first_name TEXT NOT NULL,
